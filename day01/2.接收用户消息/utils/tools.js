@@ -1,7 +1,8 @@
-/*
- 工具方法
+/**
+ * Created by li158 on 2018/11/19.
  */
 const {parseString} = require('xml2js');
+const {writeFile, readFile} = require('fs');
 
 module.exports = {
     getUserDataAsync (req) {
@@ -45,5 +46,27 @@ module.exports = {
         }
 
         return result;
+    },
+    writeFileAsync (fliePath,data){
+      return new Promise((resolve,reject)=>{
+          writeFile(fliePath,JSON.stringify(data),err=>{
+              if (!err){
+                  resolve();
+              }else{
+                  reject('writeFileAsync方法出了问题：' + err);
+              }
+          })
+      })
+    },
+    readFileAsync(filePath){
+        return new Promise((resolve,reject)=>{
+            readFile(filePath,(err,data)=>{
+                if (!err){
+                    resolve();
+                }else{
+                    reject('readFileAsync方法出了问题:' + err);
+                }
+            })
+        })
     }
 }

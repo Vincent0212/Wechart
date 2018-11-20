@@ -1,7 +1,7 @@
 /*
  通过判断用户发送的消息类型，设置具体返回的响应内容
  */
-
+const {url} = require('../confing');
 module.exports = message => {
 
     //初始化消息配置对象
